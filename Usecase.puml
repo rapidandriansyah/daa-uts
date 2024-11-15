@@ -1,0 +1,53 @@
+@startuml
+actor "Pendaftar Beasiswa" as Pendaftar
+actor "Admin" as Admin
+
+' Use cases untuk Pendaftar Beasiswa
+usecase "Registrasi Akun" as UC1
+usecase "Login" as UC2
+usecase "Isi Formulir Pendaftaran" as UC3
+usecase "Unggah Dokumen Pendukung" as UC4
+usecase "Submit Formulir" as UC5
+usecase "Cek Status Aplikasi" as UC6
+usecase "Notifikasi Diterima/Tolak" as UC7
+usecase "Pengumuman Hasil" as UC8
+
+' Use cases untuk Admin
+usecase "Verifikasi Dokumen" as UC9
+usecase "Evaluasi Skor" as UC10
+usecase "Seleksi Penerima Beasiswa" as UC11
+usecase "Tentukan Status (Diterima/Tolak)" as UC12
+usecase "Notifikasi Penerimaan/Penolakan" as UC13
+usecase "Publikasikan Daftar Penerima" as UC14
+usecase "Pembuatan Laporan Statistik" as UC15
+usecase "Pembebasan Biaya/Beasiswa" as UC16
+
+' Relasi antara aktor dan use case
+Pendaftar --> UC1
+Pendaftar --> UC2
+Pendaftar --> UC3
+Pendaftar --> UC4
+Pendaftar --> UC5
+Pendaftar --> UC6
+Pendaftar --> UC7
+Pendaftar --> UC8
+
+Admin --> UC9
+Admin --> UC10
+Admin --> UC11
+Admin --> UC12
+Admin --> UC13
+Admin --> UC14
+Admin --> UC15
+Admin --> UC16
+
+' Hubungan antar use case
+UC9 --> UC10
+UC10 --> UC11
+UC11 --> UC12
+UC12 --> UC13
+UC13 --> UC8
+UC14 --> UC15
+UC16 --> UC15
+
+@enduml

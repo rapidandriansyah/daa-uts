@@ -1,0 +1,51 @@
+@startuml
+start
+
+:Halaman Utama Aplikasi;
+if (Mahasiswa memiliki akun?) then (Ya)
+    :Login;
+else (Tidak)
+    :Registrasi Akun Mahasiswa;
+    :Login;
+endif
+
+:Isi Formulir Pendaftaran Beasiswa;
+:Unggah Dokumen Pendukung (Nilai Akademik, Prestasi Non-Akademik);
+if (Formulir Lengkap?) then (Ya)
+    :Submit Formulir;
+else (Tidak)
+    :Kembali ke Isi Formulir;
+endif
+
+:Admin menerima notifikasi aplikasi baru;
+:Admin memverifikasi dokumen (Asli dan Lengkap);
+
+if (Prestasi minimal tingkat nasional?) then (Ya)
+    :Evaluasi Nilai Akademik dan Non-Akademik;
+    :Hitung Skor Total (Bobot Nilai + Prestasi);
+else (Tidak)
+    :Tolak Aplikasi;
+    :Kirim Notifikasi Penolakan;
+    stop
+endif
+
+if (Skor memenuhi syarat?) then (Ya)
+    if (Skor >= 90) then (Beasiswa 100%)
+        :Kirim Notifikasi Penerimaan Beasiswa 100%;
+        :Admin berkoordinasi untuk pembebasan biaya kuliah penuh;
+    elseif (Skor >= 75) then (Beasiswa 50%)
+        :Kirim Notifikasi Penerimaan Beasiswa 50%;
+        :Admin berkoordinasi untuk diskon biaya kuliah 50%;
+    else (Gratis Pendaftaran)
+        :Kirim Notifikasi Penerimaan Beasiswa Gratis Pendaftaran;
+        :Admin berkoordinasi untuk pembebasan biaya pendaftaran;
+    endif
+else (Tidak)
+    :Kirim Notifikasi Penolakan;
+endif
+
+:Publikasikan Daftar Penerima Beasiswa;
+:Admin membuat laporan statistik pendaftaran;
+
+stop
+@enduml
